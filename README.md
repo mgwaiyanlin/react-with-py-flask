@@ -14,3 +14,8 @@
 	npm create vite@latest .
 
  
+## Deployment
+	cd .\frontend\
+ 	npm run build
+  	
+ 
