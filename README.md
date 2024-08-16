@@ -17,5 +17,14 @@
 ## Deployment
 	cd .\frontend\
  	npm run build
-  	
- 
+  	pip freeze > requirements.txt
+   
+Remember to add deployment code in app.py
+Go to dashboard.render.com
+	create a new web service 
+ 	build and deploy it from git repo
+  	root directory -> backend
+   	Build Command -> pip install -r requirements.txt && cd ../frontend && npm install && npm run build
+    	Start Command -> gunicorn wsgi:app
+    
+
