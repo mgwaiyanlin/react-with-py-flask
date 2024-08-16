@@ -18,7 +18,7 @@ def create_friend():
         # input data validation
         required_fields = ["name", "gender", "role", "description"]
         for field in required_fields:
-            if field not in data:
+            if field not in data or not data.get(field):
                 return jsonify({"error": f"Missing required field => {field}"}), 400
 
         # assigning input data into variables
@@ -39,7 +39,9 @@ def create_friend():
         db.session.add(new_friend)
         db.session.commit() # store into database
 
-        return jsonify({"message": "Friend created successfully!"}),201
+        # return jsonify({"message": "Friend created successfully!"}),201
+        return jsonify(new_friend.to_json()),201
+
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}),500
@@ -75,7 +77,9 @@ def update_friend(id):
         friend.description = data.get("description", friend.description)
 
         db.session.commit()
-        return jsonify({"message": "Friend was updated successfully!"})
+        # return jsonify({"message": "Friend was updated successfully!"})
+        return jsonify(friend.to_json()),200
+
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500

@@ -3,13 +3,15 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import FriendGrid from './components/FriendGrid'
 
+export const BASE_URL = "http://127.0.0.1:5000/api"
 
 function App() {
+  const [friends, setFriends] = useState();
 
   return (
     <Stack minH={"100vh"}>
       {/* navigation bar */}
-      <Navbar />
+      <Navbar setFriends={setFriends} />
 
       <Container maxW={"1200px"} my={4}>
         <Text fontSize={{ base: "3xl", md: "50" }} fontWeight={"bold"} letterSpacing={"2px"} textTransform={"uppercase"} textAlign={"center"} mb={8}>
@@ -17,7 +19,7 @@ function App() {
         </Text>
 
         {/* friend lists */}
-        <FriendGrid />
+        <FriendGrid friends={friends} setFriends={setFriends} />
       </Container>
     </Stack>
   )

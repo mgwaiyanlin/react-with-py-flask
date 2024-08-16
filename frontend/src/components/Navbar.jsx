@@ -3,7 +3,7 @@ import { IoMoon } from "react-icons/io5"
 import { LuSun } from "react-icons/lu"
 import CreateFriendModal from "./CreateFriendModal";
 
-function Navbar() {
+function Navbar({ setFriends }) {
     const { colorMode, toggleColorMode } = useColorMode()
 
     return (
@@ -26,7 +26,7 @@ function Navbar() {
                         <Button onClick={toggleColorMode}>
                             {colorMode === "light" ? <IoMoon /> : <LuSun size={20} />}
                         </Button>
-                        <CreateFriendModal />
+                        <CreateFriendModal setFriends={setFriends} />
                     </Flex>
                 </Flex>
             </Box>
